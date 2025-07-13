@@ -78,7 +78,7 @@ fi\n\
 \n\
 # Run Claude with the instructions\n\
 echo "Starting GitHub agent..."\n\
-claude --non-interactive < /app/CLAUDE_INSTRUCTIONS.md\n\
+claude --print < /app/CLAUDE_INSTRUCTIONS.md\n\
 ' > /app/run_agent.sh && chmod +x /app/run_agent.sh
 
 # Create a health check script

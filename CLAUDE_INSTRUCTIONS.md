@@ -21,7 +21,8 @@ BEGIN EXECUTION: Start by running `gh pr list --state open` to check for pull re
 
 ### 2. Check Repository Issues (Priority 2)
 - Use `gh issue list --state open` to get all open issues
-- Skip issues with the `bot-working` label (already being worked on)
+- Skip issues with the `bot-working` label (currently being worked on)
+- Skip issues with the `bot-handled` label (already completed by bot)
 - Skip issues with the `bot-skipped` label (previously determined not actionable)
 - Prioritize issues with labels like "bug", "enhancement", "good first issue"
 - For actionable issues:
@@ -32,7 +33,7 @@ BEGIN EXECUTION: Start by running `gh pr list --state open` to check for pull re
   - Create tests if applicable
   - Commit changes with reference to issue: `fixes #<issue-number>`
   - Push branch and create PR: `gh pr create --title "Fix #<issue-number>: <description>" --body "Fixes #<issue-number>"`
-  - Remove `bot-working` label and add `bot-completed` label: `gh issue edit <issue-number> --remove-label "bot-working" --add-label "bot-completed"`
+  - Change label to indicate completion: `gh issue edit <issue-number> --remove-label "bot-working" --add-label "bot-handled"`
 - For non-actionable issues:
   - Add `bot-skipped` label with reason: `gh issue edit <issue-number> --add-label "bot-skipped"`
   - Add comment explaining why it was skipped
