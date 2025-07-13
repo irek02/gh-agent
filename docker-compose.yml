@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  github-agent:
+    build: .
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - TARGET_REPO=${TARGET_REPO}
+      - GIT_USER_NAME=${GIT_USER_NAME:-GitHub Agent}
+      - GIT_USER_EMAIL=${GIT_USER_EMAIL:-agent@github.com}
+    volumes:
+      - workspace:/workspace
+    restart: unless-stopped
+    
+    # Run the agent every 10 minutes
+    command: >
+      sh -c "
+        while true; do
+          echo 'Starting agent run at $(date)'
+          /app/run_agent.sh || echo 'Agent run failed at $(date)'
+          echo 'Waiting 10 minutes before next run...'
+          sleep 600
+        done
+      "
+
+volumes:
+  workspace:

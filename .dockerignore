@@ -1,0 +1,7 @@
+target-repo/
+.env
+.git
+*.pem
+DEPLOYMENT_INSTRUCTIONS.md
+README.md
+.dockerignore
