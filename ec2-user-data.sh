@@ -11,9 +11,7 @@ yum update -y
 # Install required packages
 yum install -y git curl wget unzip jq
 
-# Install Node.js (for npm)
-curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
-yum install -y nodejs
+# Note: Node.js not needed for Claude CLI approach
 
 # Install GitHub CLI
 curl -fsSL https://cli.github.com/packages/rpm/gh-cli.repo | tee /etc/yum.repos.d/gh-cli.repo
@@ -31,10 +29,10 @@ curl -fsSL https://api.claude.ai/cli/install.sh | bash
 echo "export PATH=\"$HOME/.local/bin:$PATH\"" >> ~/.bashrc
 '
 
-# Clone the repository
+# Clone the repository (main branch)
 sudo -u github-agent bash -c '
 cd /home/github-agent
-git clone https://github.com/irek02/gh-agent.git
+git clone -b main https://github.com/irek02/gh-agent.git
 cd gh-agent
 '
 
