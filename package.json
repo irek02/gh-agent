@@ -1,0 +1,22 @@
+{
+  "name": "gh-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["github", "automation", "claude", "ai", "bot"],
+  "author": "",
+  "license": "ISC",
+  "description": "Automated GitHub issue processing agent powered by Claude AI",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.56.0",
+    "@octokit/rest": "^22.0.0",
+    "dotenv": "^17.2.0",
+    "node-cron": "^4.2.1",
+    "simple-git": "^3.28.0"
+  }
+}

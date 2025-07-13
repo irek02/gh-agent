@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  gh-agent:
+    build: .
+    container_name: github-agent
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GITHUB_OWNER=${GITHUB_OWNER}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - POLL_INTERVAL_SECONDS=${POLL_INTERVAL_SECONDS:-60}
+      - PROCESSED_ISSUES_FILE=/app/processed_issues.json
+    volumes:
+      - ./target-repo:/app/target-repo
+      - ./logs:/app/logs
+      - ./processed_issues.json:/app/processed_issues.json
+    restart: unless-stopped
